@@ -11,8 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh './mvnw -Dmaven.test.skip package'
-                sh 'docker build --tag=petclinic:latest .'
+                sh './mvnw package'
             }
         }
         stage('Push to registry') {
