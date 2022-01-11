@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh './mvnw package'
+                sh './mvnw -Dmaven.test.skip package'
             }
         }
         stage('Push to registry') {
