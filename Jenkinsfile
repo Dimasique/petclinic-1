@@ -12,12 +12,12 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh './mvnw -Dmaven.test.skip package'
+                sh 'docker build --tag=petclinic:latest .'
             }
         }
         stage('Push to registry') {
             steps {
                 echo 'Pushing..'
-                sh 'mv target/*.jar app.jar'
             }
         }
         stage('Deploy') {
@@ -26,7 +26,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying....'
-                sh 'java -Dserver.port=8083 -jar app.jar'
+                sh 'docker run -d -p 8083:8080 petclinic:latest'
             }
         }        
     }
