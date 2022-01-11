@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh './mvnw build'
+                sh './mvnw package'
             }
         }
         stage('Push to registry') {
