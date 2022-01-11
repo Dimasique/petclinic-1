@@ -26,7 +26,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying....'
-                sh 'java -jar app.jar'
+                sh 'java -Dserver.port=8083 -jar app.jar'
             }
         }        
     }
